@@ -1,14 +1,20 @@
-# Iris Prediction App
+---
+title: Iris Flower Predictor
+emoji: 🌸
+colorFrom: blue
+colorTo: green
+sdk: streamlit
+sdk_version: "1.0"
+app_file: app.py
+pinned: false
+---
 
-Une application pour prédire les espèces de fleurs Iris à l'aide d'un modèle entraîné sur l'ensemble de données Iris. Le projet utilise **FastAPI** pour le serveur et **Streamlit** pour le client.
+# Iris Flower Predictor
 
-## **Prérequis**
+Cette application permet de prédire le type de fleur Iris en fonction de ses caractéristiques (longueur et largeur des sépales et pétales). Elle utilise un modèle de machine learning pour effectuer la prédiction et est déployée avec **Streamlit**.
 
-- Docker et Docker Compose installés sur votre machine.
+## Comment utiliser l'application
 
-## **Installation et Exécution**
-
-1. Clonez ce dépôt :
-   ```bash
-   git clone https://github.com/votre-utilisateur/iris-prediction-app.git
-   cd iris-prediction-app
+- Entrez les caractéristiques de la fleur.
+- Cliquez sur "Prédire" pour obtenir la catégorie de la fleur.
+- Téléversez un fichier CSV pour prédire plusieurs fleurs à la fois.
