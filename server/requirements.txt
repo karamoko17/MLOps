@@ -1,0 +1,8 @@
+fastapi
+pymongo
+uvicorn
+streamlit
+joblib
+scikit-learn
+pandas
+matplotlib
