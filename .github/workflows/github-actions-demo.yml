@@ -16,4 +16,3 @@ jobs:
         courir: |
           ls ${{ github.espace de travail }}
       - run : echo "🍏 Le statut de ce travail est ${{ job.status }}."
-
