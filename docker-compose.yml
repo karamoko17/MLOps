@@ -1,30 +1,29 @@
 version: '3'
 
 services:
-    mongo:
-        image: mongo
+  mongo:
+    image: mongo
 
-    server:
-        image: mlops-server
-        build:
-            context: ./server
-            dockerfile: Dockerfile
-        ports:
-        - 8000:8000
+  server:
+    image: ghcr.io/karamoko17/mlops-server  # GHCR URL ici
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
 
-    client:
-        image: mlops-client
-        build:
-            context: ./client
-            dockerfile: Dockerfile
-        ports:
-        - 8501:8501
+  client:
+    image: ghcr.io/karamoko17/mlops-client  # GHCR URL ici
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 8501:8501
 
-    model_training:  # Ajout du service d'entraînement
-        build:
-            context: ./train  # Répertoire contenant le Dockerfile de ton modèle
-            dockerfile: Dockerfile
-        volumes:
-            - ./train/models:/app/models  # Monte le volume local pour stocker les résultats
-        command: python train.py 
-
+  model_training: 
+    build:
+      context: ./train
+      dockerfile: Dockerfile
+    volumes:
+      - ./train/models:/app/models
+    command: python train.py
