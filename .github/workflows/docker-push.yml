@@ -3,7 +3,7 @@ name: Docker Push to GHCR
 on:
   push:
     branches:
-      - main  # Déclenche le workflow quand tu fais un push sur la branche 'main'
+      - main
   workflow_dispatch:  # Permet d'exécuter manuellement le workflow depuis GitHub
 
 jobs:
@@ -15,13 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Installer Docker Compose
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-
-      # Log in to GitHub Container Registry
+      # Se connecter à GitHub Container Registry
       - name: Log in to GitHub Container Registry
         run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
@@ -30,7 +24,7 @@ jobs:
         run: |
           docker-compose -f docker-compose.yml build
 
-      # Push Docker images to GHCR
+      # Pousser les images vers GHCR
       - name: Push Docker images to GHCR
         run: |
           docker-compose -f docker-compose.yml push
