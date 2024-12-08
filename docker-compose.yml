@@ -20,7 +20,8 @@ services:
     ports:
       - 8501:8501
 
-  model_training: 
+  model_training:
+    images : ghcr.io/karamoko17/mlops-model_training
     build:
       context: ./train
       dockerfile: Dockerfile
