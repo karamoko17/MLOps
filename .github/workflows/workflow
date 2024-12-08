@@ -1,31 +1,17 @@
-name: Docker Push to GHCR
-
-on:
-  push:
-    branches:
-      - main  # Déclenche le workflow quand il y a un push sur la branche 'main'
-  # Optionnel : Ajouter un trigger manuel pour tester sans commit
-  workflow_dispatch:
-
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
-
     steps:
-      # Checkout le code
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Log in to GitHub Container Registry
       - name: Log in to GitHub Container Registry
         run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      # Build the Docker image
       - name: Build Docker image
         run: |
           docker build -t ghcr.io/karamoko17/mlops:latest .
 
-      # Push Docker image to GHCR
       - name: Push Docker image to GHCR
         run: |
           docker push ghcr.io/karamoko17/mlops:latest
