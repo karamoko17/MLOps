@@ -157,7 +157,7 @@ if "current_page" not in st.session_state:
     st.session_state.current_page = "Prédiction"  # Page par défaut
 
 # Utilisation de st.radio pour la navigation entre les pages
-page = st.sidebar.radio("Aller à", ["Prédiction", "Métriques"])
+page = st.sidebar.button("Aller à", ["Prédiction", "Métriques"])
 
 # Mise à jour de la page en fonction de la sélection de l'utilisateur
 if page == "Prédiction":
