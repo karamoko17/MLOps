@@ -100,6 +100,6 @@ Exemple de fonctionnalité :
 
 <h2 id="Deployememnt de l'appliction sur Streamlit Cloud">⚖️ Deployememnt de l'appliction sur Streamlit Cloud</h2>
 
-L'application a été déployée sur **Streamlit Cloud**, offrant ainsi une interface interactive accessible via le lien suivant: [Accéder à l'application](https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/).
+L'application a été déployée sur **Streamlit Cloud**, offrant ainsi une interface interactive accessible via le lien suivant: [Accéder à l'application](https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/) ou https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/. 
 
 Grâce à ce déploiement, les utilisateurs peuvent facilement interagir avec l'application pour effectuer des prédictions sur les fleurs Iris, visualiser les résultats sous forme d'images et consulter les métriques du modèle. Streamlit Cloud permet de rendre l'application disponible en ligne, sans nécessiter d'infrastructure complexe, offrant ainsi une expérience utilisateur fluide et accessible depuis n'importe quel navigateur.
