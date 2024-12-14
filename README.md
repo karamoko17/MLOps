@@ -83,9 +83,9 @@ L'application propose deux interfaces principales : une page dédiée à la pré
 
 Exemple de fonctionnalité :
 
-- Prédiction : L'utilisateur entre les caractéristiques d'une fleur et le modèle prédit l'espèce. Par exemple, la prédiction pour une fleur donnée pourrait être Setosa.
-- Image de la fleur : Une image de la fleur correspondant à la prédiction est affichée, offrant une représentation visuelle.
-- Métriques : Les métriques du modèle, telles que la précision, le rapport de classification, et les courbes ROC et Precision-Recall, sont affichées pour évaluer la performance du modèle.
+- **Prédiction** : L'utilisateur entre les caractéristiques d'une fleur et le modèle prédit l'espèce. Par exemple, la prédiction pour une fleur donnée pourrait être Setosa.
+- **Image de la fleur** : Une image de la fleur correspondant à la prédiction est affichée, offrant une représentation visuelle.
+- **Métriques** : Les métriques du modèle, telles que la précision, le rapport de classification, et les courbes ROC et Precision-Recall, sont affichées pour évaluer la performance du modèle.
 
 ![image](https://github.com/user-attachments/assets/31e87730-aaec-4e3f-99f5-07015e33ceb1)
 
