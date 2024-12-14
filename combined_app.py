@@ -1,12 +1,15 @@
+import os
 import threading
+import requests
+import joblib
+import pandas as pd
+import matplotlib.pyplot as plt
+import streamlit as st
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-import streamlit as st
-import requests
 from pydantic import BaseModel
-import joblib
-import os
+
 
 # Charger les ressources nécessaires pour le serveur FastAPI
 #model = joblib.load("server/model.pkl")
@@ -26,19 +29,22 @@ file_path2 = os.path.join("server", "feature_names.pkl")
 feature_names = joblib.load(file_path2)
 
 
-# FastAPI App
+# ---------------------------------------------
+# Configuration FastAPI
+# ---------------------------------------------
 fastapi_app = FastAPI()
 
 # Autoriser les requêtes CORS pour Streamlit
 fastapi_app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Permettre les requêtes de toutes origines
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Schéma pour les requêtes de prédiction
+
+# Schéma pour la requête de prédiction
 class PredictionRequest(BaseModel):
     sepal_length: float
     sepal_width: float
@@ -61,13 +67,7 @@ def predict(request: PredictionRequest):
 
 @fastapi_app.get("/metrics/")
 def get_metrics():
-    # Renvoyer les métriques sous forme de dictionnaire
-    return {
-        "accuracy": metrics["accuracy"],
-        "roc_auc": metrics["roc_auc"],
-        "pr_auc": metrics["pr_auc"],
-        "classification_report": metrics["classification_report"],
-    }
+    return metrics
 
 
 # Fonction pour démarrer FastAPI
@@ -75,47 +75,94 @@ def start_fastapi():
     uvicorn.run(fastapi_app, host="0.0.0.0", port=8000)
 
 
-# Streamlit App
-def start_streamlit():
-    st.title("MLOps Dashboard")
-    st.write("Interagissez avec le modèle FastAPI à l'aide de cette interface.")
+# ---------------------------------------------
+# Configuration Streamlit
+# ---------------------------------------------
+# URL de l'API FastAPI
+API_URL = "http://localhost:8000"
 
-    # Formulaire de prédiction
-    st.subheader("Faire une prédiction")
-    sepal_length = st.number_input("Longueur du sépale", min_value=0.0)
-    sepal_width = st.number_input("Largeur du sépale", min_value=0.0)
-    petal_length = st.number_input("Longueur du pétale", min_value=0.0)
-    petal_width = st.number_input("Largeur du pétale", min_value=0.0)
+# Fonction pour afficher la page de prédiction
+def prediction_page():
+    st.title("Iris Flower Predictor")
+    st.write("Entrez les caractéristiques de la fleur pour prédire sa catégorie.")
+
+    # Champs de saisie pour la prédiction
+    sepal_length = st.number_input("Sepal Length", min_value=0.0, step=0.1)
+    sepal_width = st.number_input("Sepal Width", min_value=0.0, step=0.1)
+    petal_length = st.number_input("Petal Length", min_value=0.0, step=0.1)
+    petal_width = st.number_input("Petal Width", min_value=0.0, step=0.1)
 
     if st.button("Prédire"):
-        payload = {
-            "sepal_length": sepal_length,
-            "sepal_width": sepal_width,
-            "petal_length": petal_length,
-            "petal_width": petal_width,
-        }
-        response = requests.post("http://localhost:8000/predict/", json=payload)
-        if response.status_code == 200:
-            st.success(f"Résultat : {response.json()['prediction']}")
+        if all(v == 0.0 for v in [sepal_length, sepal_width, petal_length, petal_width]):
+            st.error("Veuillez entrer des valeurs non nulles pour les caractéristiques.")
         else:
-            st.error("Erreur lors de la requête à l'API")
+            payload = {
+                "sepal_length": sepal_length,
+                "sepal_width": sepal_width,
+                "petal_length": petal_length,
+                "petal_width": petal_width,
+            }
+            try:
+                response = requests.post(f"{API_URL}/predict/", json=payload)
+                if response.status_code == 200:
+                    prediction = response.json()["prediction"]
+                    st.success(f"La fleur prédite est : **{prediction}**")
+                else:
+                    st.error(f"Erreur API ({response.status_code}): {response.text}")
+            except requests.exceptions.RequestException as e:
+                st.error(f"Erreur de connexion à l'API : {e}")
 
-    # Visualisation des métriques
-    st.subheader("Visualiser les métriques")
-    if st.button("Obtenir les métriques"):
-        response = requests.get("http://localhost:8000/metrics/")
+
+# Fonction pour afficher la page des métriques
+def metrics_page():
+    st.title("Métriques d'apprentissage du modèle")
+    try:
+        response = requests.get(f"{API_URL}/metrics/")
         if response.status_code == 200:
             metrics = response.json()
-            st.json(metrics)
+            st.subheader("Accuracy")
+            st.write(f"Accuracy: {metrics['accuracy']:.2f}")
+
+            st.subheader("Classification Report")
+            st.text(metrics['classification_report'])
+
+            st.subheader("AUC ROC")
+            for i, auc in enumerate(metrics["roc_auc"]):
+                st.write(f"AUC ROC for class {i}: {auc:.2f}")
+
+            st.subheader("Courbe ROC")
+            for i, (fpr, tpr, auc) in enumerate(
+                zip(metrics["fpr"], metrics["tpr"], metrics["roc_auc"])
+            ):
+                fig, ax = plt.subplots()
+                ax.plot(fpr, tpr, label=f"Class {i} (AUC = {auc:.2f})")
+                ax.plot([0, 1], [0, 1], "k--")
+                ax.legend()
+                st.pyplot(fig)
         else:
-            st.error("Erreur lors de la récupération des métriques")
+            st.error(f"Erreur API ({response.status_code}): {response.text}")
+    except requests.exceptions.RequestException as e:
+        st.error(f"Erreur de connexion à l'API : {e}")
 
 
-# Lancer FastAPI et Streamlit ensemble
+# Gestion de la navigation entre les pages
+def main():
+    st.sidebar.title("Navigation")
+    page = st.sidebar.radio("Aller à", ["Prédiction", "Métriques"])
+
+    if page == "Prédiction":
+        prediction_page()
+    elif page == "Métriques":
+        metrics_page()
+
+
+# ---------------------------------------------
+# Démarrage des applications
+# ---------------------------------------------
 if __name__ == "__main__":
     # Démarrer FastAPI dans un thread séparé
     api_thread = threading.Thread(target=start_fastapi, daemon=True)
     api_thread.start()
 
-    # Lancer Streamlit
-    start_streamlit()
+    # Démarrer Streamlit
+    main()
