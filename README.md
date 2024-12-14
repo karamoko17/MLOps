@@ -36,7 +36,7 @@ L'application permet à l'utilisateur de :
 
 ``` bash
 - Clonez le dépôt
-git clone [https://github.com/username/iris-flower-prediction.git](https://github.com/karamoko17/Projet_MlOps.git)
+git clone [https://github.com/karamoko17/Projet_MlOps.git](https://github.com/karamoko17/Projet_MlOps.git)
 cd iris-flower-prediction
 
 - Créez un environnement virtuel (optionnel)
