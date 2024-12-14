@@ -1,29 +1,42 @@
-version: '3'
+name: Build and Push Docker Images
 
-services:
-    mongo:
-        image: mongo
+on:
+  push:
+    branches:
+      - main
 
-    server:
-        image: mlops-server
-        build:
-            context: ./server
-            dockerfile: Dockerfile
-        ports:
-        - 8000:8000
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
 
-    client:
-        image: mlops-client
-        build:
-            context: ./client
-            dockerfile: Dockerfile
-        ports:
-        - 8501:8501
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    model_training:  # Ajout du service d'entraînement
-        build:
-            context: ./train  # Répertoire contenant le Dockerfile de ton modèle
-            dockerfile: Dockerfile
-        volumes:
-            - ./train/models:/app/models  # Monte le volume local pour stocker les résultats
-        command: python train.py 
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ secrets.GITHUB_ACTOR }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and Push Server Image
+      uses: docker/build-push-action@v4
+      with:
+        context: ./server
+        push: true
+        tags: ghcr.io/karamoko17/mlops-server:latest
+
+    - name: Build and Push Client Image
+      uses: docker/build-push-action@v4
+      with:
+        context: ./client
+        push: true
+        tags: ghcr.io/karamoko17/mlops-client:latest
+
+    - name: Build and Push Training Image
+      uses: docker/build-push-action@v4
+      with:
+        context: ./train
+        push: true
+        tags: ghcr.io/karamoko17/mlops-train:latest
