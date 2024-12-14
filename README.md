@@ -12,3 +12,6 @@ Une application pour prédire les espèces de fleurs Iris à l'aide d'un modèle
    ```bash
    git clone https://github.com/votre-utilisateur/iris-prediction-app.git
    cd iris-prediction-app
+
+## **Deployememnt de l'appliction sur Streamlit Cloud**
+https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/
