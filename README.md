@@ -35,8 +35,6 @@ L'application permet à l'utilisateur de :
 
 <h2 id="Installation">🛠️ Installation</h2>
 
-1. Clonez ce dépôt :
-
 - Clonez le dépôt
 git clone [https://github.com/username/iris-flower-prediction.git](https://github.com/karamoko17/Projet_MlOps.git)
 cd iris-flower-prediction
@@ -48,12 +46,27 @@ source venv/bin/activate  # Sur Windows, utilisez venv\Scripts\activate
 - Installez les dépendances
 pip install -r requirements.txt
 
-- Coammande pour lancer le docker
-docker compose build
-docker compose up
+
 
 <h2 id="Utilisation">💻 Utilisation</h2>
 
+``` bash
+docker compose build
+docker compose up
+
+# Démarrez l'API FastAPI
+uvicorn app:app --reload
+
+# Démarrez l'application Streamlit
+streamlit run app.py
+
+un exemple d'input pour l'API:
+{
+  "sepal_length": 5.1,
+  "sepal_width": 3.5,
+  "petal_length": 1.4,
+  "petal_width": 0.2
+}
 
 
 <h2 id="Fonctionnalités">🏗️ Fonctionnalités</h2>
