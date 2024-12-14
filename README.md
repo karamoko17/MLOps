@@ -36,14 +36,14 @@ L'application permet à l'utilisateur de :
 1. Clonez ce dépôt :
    ```bash
    # Clonez le dépôt
-git clone https://github.com/username/iris-flower-prediction.git
+git clone [https://github.com/username/iris-flower-prediction.git](https://github.com/karamoko17/Projet_MlOps.git)
 cd iris-flower-prediction
 
-# Créez un environnement virtuel (optionnel)
+- Créez un environnement virtuel (optionnel)
 python3 -m venv venv
 source venv/bin/activate  # Sur Windows, utilisez venv\Scripts\activate
 
-# Installez les dépendances
+- Installez les dépendances
 pip install -r requirements.txt
 
 
