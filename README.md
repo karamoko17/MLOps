@@ -1,6 +1,5 @@
 # Iris Prediction App
 
-Une application pour prédire les espèces de fleurs Iris à l'aide d'un modèle entraîné sur l'ensemble de données Iris. Le projet utilise **FastAPI** pour le serveur et **Streamlit** pour le client.
 
 ## 📖 **Table of Contents**
 1. [Descriptions](#descriptions)
@@ -14,8 +13,18 @@ Une application pour prédire les espèces de fleurs Iris à l'aide d'un modèle
 
 <h2 id="Description">🧩 **Description**</h2>
 
-Ce projet utilise des techniques de machine learning pour prédire la catégorie d'une fleur Iris (Setosa, Versicolor, Virginica) en fonction de ses caractéristiques. Le modèle est déployé via une API FastAPI et une interface utilisateur Streamlit.
+Cette application permet de prédire les espèces de fleurs Iris à l'aide d'un modèle de machine learning préalablement entraîné sur l'ensemble de données Iris. Le modèle est capable de classer une fleur parmi trois espèces possibles : Setosa, Versicolor, ou Virginica, en fonction de ses caractéristiques physiques, telles que la longueur et la largeur des sépales et des pétales.
 
+Le projet utilise FastAPI pour exposer une API RESTful, permettant de traiter les demandes de prédiction via des requêtes HTTP. Streamlit est utilisé pour créer une interface graphique interactive, où l'utilisateur peut facilement entrer les caractéristiques d'une fleur et obtenir une prédiction immédiate.
+
+Le modèle de machine learning utilisé dans ce projet est un modèle supervisé qui a été formé à l'aide de l'ensemble de données Iris. Cette base de données est largement utilisée pour les démonstrations de classification en machine learning et contient des informations sur 150 échantillons de fleurs Iris, avec quatre caractéristiques par échantillon.
+
+L'application permet à l'utilisateur de :
+
+- Entrer les caractéristiques d'une fleur Iris.
+- Obtenir une prédiction instantanée sur l'espèce de la fleur.
+- Visualiser les résultats sous forme de texte et d'images des différentes espèces (Setosa, Versicolor, Virginica).
+- Consulter les métriques du modèle, telles que la précision, le rapport de classification, ainsi que les courbes ROC et Precision-Recall.
 
 <h2 id="Prérequis">🤖 Prérequis</h2>
 
