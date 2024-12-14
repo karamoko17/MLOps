@@ -145,24 +145,16 @@ def metrics_page():
         st.error(f"Erreur de connexion à l'API : {e}")
 
 
-# Gestion de la navigation entre les pages
-def main():
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Aller à", ["Prédiction", "Métriques"])
+# ---------------------- Gestion de la navigation ----------------------
+# Ajouter les boutons dans la barre latérale pour changer de page
+if st.sidebar.button("Page Prédiction"):
+    st.session_state.current_page = "Prédiction"
 
-    if page == "Prédiction":
-        prediction_page()
-    elif page == "Métriques":
-        metrics_page()
+if st.sidebar.button("Page Métriques"):
+    st.session_state.current_page = "Métriques"
 
-
-# ---------------------------------------------
-# Démarrage des applications
-# ---------------------------------------------
-if __name__ == "__main__":
-    # Démarrer FastAPI dans un thread séparé
-    api_thread = threading.Thread(target=start_fastapi, daemon=True)
-    api_thread.start()
-
-    # Démarrer Streamlit
-    main()
+# Afficher la page en fonction de l'état
+if st.session_state.current_page == "Prédiction":
+    prediction_page()
+elif st.session_state.current_page == "Métriques":
+    metrics_page()
