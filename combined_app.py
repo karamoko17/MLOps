@@ -77,7 +77,6 @@ def start_fastapi():
 # ---------------------------------------------
 # URL de l'API FastAPI
 API_URL = "http://localhost:8000"
-API_URL1 = "http://fastapi:8000/predict/"
 # Fonction pour afficher la page de prédiction
 def prediction_page():
     st.title("Welcome to My App: Iris Flower Predictor")
@@ -101,7 +100,7 @@ def prediction_page():
             }
             try:
                 # Envoyer la requête POST
-                response = requests.post(API_URL1, json=payload)
+                response = requests.post(API_URL, json=payload)
 
                 # Vérifier si la réponse est valide
                 if response.status_code == 200:
