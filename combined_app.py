@@ -112,11 +112,11 @@ def prediction_page():
 
                         # Afficher l'image de la fleur prédite
                         if prediction == "Setosa":
-                            st.image("images/setosa.jpg", caption="Iris Setosa", use_container_width=True)
+                            st.image("client/images/setosa.jpg", caption="Iris Setosa", use_container_width=True)
                         elif prediction == "Versicolor":
-                            st.image("images/versicolor.jpg", caption="Iris Versicolor", use_container_width=True)
+                            st.image("client/images/versicolor.jpg", caption="Iris Versicolor", use_container_width=True)
                         elif prediction == "Virginica":
-                            st.image("images/virginica.jpg", caption="Iris Virginica", use_container_width=True)
+                            st.image("client/images/virginica.jpg", caption="Iris Virginica", use_container_width=True)
                     else:
                         st.error(f"Réponse de l'API inattendue : {response_data}")
                 else:
