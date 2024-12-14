@@ -116,67 +116,36 @@ def prediction_page():
 def metrics_page():
     st.title("Métriques d'apprentissage du modèle")
 
-    # Afficher l'accuracy
+    # Afficher les métriques
     st.subheader("Accuracy")
-    accuracy = metrics.get("accuracy", "Non disponible")
-    if accuracy != "Non disponible":
-        st.write(f"Accuracy: {accuracy:.2f}")
-    else:
-        st.warning("L'accuracy n'est pas disponible.")
+    st.write(f"Accuracy: {metrics['accuracy']:.2f}")
 
-    # Afficher le classification report
     st.subheader("Classification Report")
-    classification_report = metrics.get("classification_report", "Non disponible")
-    if classification_report != "Non disponible":
-        st.text(classification_report)
-    else:
-        st.warning("Le rapport de classification n'est pas disponible.")
+    st.text(metrics['classification_report'])
 
-    # Afficher AUC ROC
     st.subheader("AUC ROC")
-    auc_values = metrics.get("roc_auc", [])
-    if auc_values:
-        for i, auc in enumerate(auc_values):
-            st.write(f"AUC ROC for class {i}: {auc:.2f}")
-    else:
-        st.warning("Les valeurs AUC ROC ne sont pas disponibles.")
+    for i in range(len(metrics['roc_auc'])):
+        st.write(f"AUC ROC for class {i}: {metrics['roc_auc'][i]:.2f}")
 
-    # Afficher la courbe ROC
+    # Afficher la courbe ROC pour chaque classe
     st.subheader("Courbe ROC")
-    fpr_values = metrics.get("fpr", [])
-    tpr_values = metrics.get("tpr", [])
-    auc_values = metrics.get("roc_auc", [])
-    if fpr_values and tpr_values and auc_values:
-        for i, (fpr, tpr, auc) in enumerate(zip(fpr_values, tpr_values, auc_values)):
-            fig, ax = plt.subplots()
-            ax.plot(fpr, tpr, label=f"Class {i} (AUC = {auc:.2f})")
-            ax.plot([0, 1], [0, 1], "k--")
-            ax.set_xlim([0.0, 1.0])
-            ax.set_ylim([0.0, 1.05])
-            ax.set_xlabel('False Positive Rate')
-            ax.set_ylabel('True Positive Rate')
-            ax.legend(loc='lower right')
-            st.pyplot(fig)
-    else:
-        st.warning("Les données pour les courbes ROC sont manquantes.")
+    for i in range(len(metrics['roc_auc'])):
+        fig, ax = plt.subplots()
+        ax.plot(metrics['fpr'][i], metrics['tpr'][i], color='b', lw=2, label=f'ROC curve (area = {metrics["roc_auc"][i]:.2f})')
+        ax.plot([0, 1], [0, 1], color='gray', linestyle='--')
+        ax.set(xlim=[0.0, 1.0], ylim=[0.0, 1.05], xlabel='False Positive Rate', ylabel='True Positive Rate')
+        ax.legend(loc='lower right')
+        st.pyplot(fig)
 
-    # Afficher la courbe Precision-Recall
+    # Afficher la courbe Precision-Recall pour chaque classe
     st.subheader("Courbe Precision-Recall")
-    recall_values = metrics.get("recall", [])
-    precision_values = metrics.get("precision", [])
-    pr_auc_values = metrics.get("pr_auc", [])
-    if recall_values and precision_values and pr_auc_values:
-        for i, (recall, precision, pr_auc) in enumerate(zip(recall_values, precision_values, pr_auc_values)):
-            fig, ax = plt.subplots()
-            ax.plot(recall, precision, label=f"Class {i} (PR AUC = {pr_auc:.2f})")
-            ax.set_xlim([0.0, 1.0])
-            ax.set_ylim([0.0, 1.05])
-            ax.set_xlabel('Recall')
-            ax.set_ylabel('Precision')
-            ax.legend(loc='lower left')
-            st.pyplot(fig)
-    else:
-        st.warning("Les données pour les courbes Precision-Recall sont manquantes.")
+    for i in range(len(metrics['pr_auc'])):
+        fig, ax = plt.subplots()
+        ax.plot(metrics['recall'][i], metrics['precision'][i], color='b', lw=2, label=f'PR curve (area = {metrics["pr_auc"][i]:.2f})')
+        ax.set(xlim=[0.0, 1.0], ylim=[0.0, 1.05], xlabel='Recall', ylabel='Precision')
+        ax.legend(loc='lower left')
+        st.pyplot(fig)      
+        
         
         
 
