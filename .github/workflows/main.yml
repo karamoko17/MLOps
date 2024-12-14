@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+    mongo:
+        image: mongo
+
+    server:
+        image: mlops-server
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        ports:
+        - 8000:8000
+
+    client:
+        image: mlops-client
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        ports:
+        - 8501:8501
+
+    model_training:  # Ajout du service d'entraînement
+        build:
+            context: ./train  # Répertoire contenant le Dockerfile de ton modèle
+            dockerfile: Dockerfile
+        volumes:
+            - ./train/models:/app/models  # Monte le volume local pour stocker les résultats
+        command: python train.py 
