@@ -3,6 +3,7 @@ uvicorn
 streamlit
 requests
 joblib
+pandas
+matplotlib
 scikit-learn
-numpy
-pydantic
+
