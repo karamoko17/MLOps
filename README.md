@@ -58,6 +58,8 @@ uvicorn app:app --reload
 
 # Démarrez l'application Streamlit
 streamlit run app.py
+ou
+http://localhost:8501/
 
 un exemple d'input pour l'API:
 {
@@ -79,7 +81,10 @@ un exemple d'input pour l'API:
 
 Voici un exemple de prédiction pour une fleur Iris :
 - Prédiction : Setosa
-- Image de la fleur : ![Iris Setosa](images/setosa.jpg)
+- Image de la fleur
+![image](https://github.com/user-attachments/assets/07aa8bfd-87ca-45ed-9852-46a95e2be512)
+
+  
 
 
 <h2 id="Deployememnt de l'appliction sur Streamlit Cloud">⚖️ Deployememnt de l'appliction sur Streamlit Cloud</h2>
