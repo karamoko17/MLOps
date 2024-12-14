@@ -80,7 +80,7 @@ API_URL = "http://localhost:8000"
 
 # Fonction pour afficher la page de prédiction
 def prediction_page():
-    st.title("Iris Flower Predictor")
+    st.title("Welcome to My App: Iris Flower Predictor")
     st.write("Entrez les caractéristiques de la fleur pour prédire sa catégorie.")
 
     # Champs de saisie pour la prédiction
@@ -100,12 +100,28 @@ def prediction_page():
                 "petal_width": petal_width,
             }
             try:
-                response = requests.post(f"{API_URL}/predict/", json=payload)
+                # Envoyer la requête POST
+                response = requests.post(API_URL, json=payload)
+
+                # Vérifier si la réponse est valide
                 if response.status_code == 200:
-                    prediction = response.json()["prediction"]
-                    st.success(f"La fleur prédite est : **{prediction}**")
+                    response_data = response.json()
+                    if "prediction" in response_data:
+                        prediction = response_data["prediction"]
+                        st.success(f"La fleur prédite est : **{prediction}**")
+
+                        # Afficher l'image de la fleur prédite
+                        if prediction == "Setosa":
+                            st.image("images/setosa.jpg", caption="Iris Setosa", use_container_width=True)
+                        elif prediction == "Versicolor":
+                            st.image("images/versicolor.jpg", caption="Iris Versicolor", use_container_width=True)
+                        elif prediction == "Virginica":
+                            st.image("images/virginica.jpg", caption="Iris Virginica", use_container_width=True)
+                    else:
+                        st.error(f"Réponse de l'API inattendue : {response_data}")
                 else:
                     st.error(f"Erreur API ({response.status_code}): {response.text}")
+
             except requests.exceptions.RequestException as e:
                 st.error(f"Erreur de connexion à l'API : {e}")
 
