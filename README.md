@@ -9,8 +9,8 @@ Une application pour prédire les espèces de fleurs Iris à l'aide d'un modèle
 4. [Utilisation](#Utilisation)
 5. [Fonctionnalités](#Fonctionnalités)
 6. [Contribuer](#Contribuer)
-7. [Exemples de résultats](#Exemples de résultats)
-8. [Deployememnt de l'appliction sur Streamlit Cloud](#Deployememnt de l'appliction sur Streamlit Cloud)
+7. [Exemples de résultats](#Exemples-de-résultats)
+8. [Deployememnt de l'appliction sur Streamlit Cloud](#Deployememnt-de-l'appliction-sur-Streamlit-Cloud)
 
 <h2 id="Description">🧩 **Description**</h2>
 
