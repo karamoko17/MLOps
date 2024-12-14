@@ -36,8 +36,8 @@ L'application permet à l'utilisateur de :
 <h2 id="Installation">🛠️ Installation</h2>
 
 1. Clonez ce dépôt :
-   ```bash
-   # Clonez le dépôt
+
+- Clonez le dépôt
 git clone [https://github.com/username/iris-flower-prediction.git](https://github.com/karamoko17/Projet_MlOps.git)
 cd iris-flower-prediction
 
@@ -48,6 +48,9 @@ source venv/bin/activate  # Sur Windows, utilisez venv\Scripts\activate
 - Installez les dépendances
 pip install -r requirements.txt
 
+- Coammande pour lancer le docker
+docker compose build
+docker compose up
 
 <h2 id="Utilisation">💻 Utilisation</h2>
 
