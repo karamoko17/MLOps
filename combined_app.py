@@ -145,14 +145,14 @@ def metrics_page():
         st.error(f"Erreur de connexion à l'API : {e}")
 
 
-# ---------------------- Gestion de la navigation ----------------------
-# Ajouter les boutons dans la barre latérale pour changer de page
-if st.sidebar.button("Page Prédiction"):
-    st.session_state.current_page = "Prédiction"
+def main():
+    st.sidebar.title("Navigation")
+    page = st.session_state.current_page("Aller à", ["Prédiction", "Métriques"])
 
-if st.sidebar.button("Page Métriques"):
-    st.session_state.current_page = "Métriques"
-
+    if page == "Prédiction":
+        prediction_page()
+    elif page == "Métriques":
+        metrics_page()
 # ---------------------------------------------
 # Démarrage des applications
 # ---------------------------------------------
