@@ -78,13 +78,22 @@ un exemple d'input pour l'API:
 - Interface interactive via Streamlit
 
 <h2 id="Exemples de résultats">🎯 Exemples de résultats</h2>
+L'application comporte deux interfaces: une page pour la prediction et une autre pour les metriques.
 
-Voici un exemple de prédiction pour une fleur Iris :
+Voici un exemple de prédiction et de metrique pour une fleur Iris :
 - Prédiction : Setosa
 - Image de la fleur
-![image](https://github.com/user-attachments/assets/07aa8bfd-87ca-45ed-9852-46a95e2be512)
+- Les metriques
 
-  
+![image](https://github.com/user-attachments/assets/31e87730-aaec-4e3f-99f5-07015e33ceb1)
+
+![image](https://github.com/user-attachments/assets/f98b4f91-bc38-4d6d-9f20-ad40c0bb18be)
+
+![image](https://github.com/user-attachments/assets/190b0859-fc25-4d15-ba4f-74527b0a6c6d)
+
+![image](https://github.com/user-attachments/assets/443a536d-b2ed-4e33-9db9-a9f232017d63)
+
+![image](https://github.com/user-attachments/assets/7f14346a-5ced-495a-8b1c-0fac446f7d0f)
 
 
 <h2 id="Deployememnt de l'appliction sur Streamlit Cloud">⚖️ Deployememnt de l'appliction sur Streamlit Cloud</h2>
