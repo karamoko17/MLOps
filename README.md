@@ -50,8 +50,7 @@ pip install -r requirements.txt
 <h2 id="Utilisation">💻 Utilisation</h2>
 
 ``` bash
-docker compose build
-docker compose up
+docker pull karamoko1703/mlops:latest
 
 # Démarrez l'API FastAPI
 uvicorn app:app --reload
