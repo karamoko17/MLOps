@@ -1,5 +1,5 @@
 import os
-import threading
+#import threading
 import requests
 import joblib
 import pandas as pd
@@ -66,16 +66,6 @@ def predict(request: PredictionRequest):
     return {"prediction": class_name[prediction]}
 
 
-@fastapi_app.get("/metrics/")
-def get_metrics():
-    # Debug : Afficher les métriques avant de les renvoyer
-    print("Metrics loaded:", metrics)
-    
-    try:
-        return metrics
-    except Exception as e:
-        return {"error": f"Error retrieving metrics: {e}"}
-
 
 # Fonction pour démarrer FastAPI
 def start_fastapi():
@@ -126,79 +116,69 @@ def prediction_page():
 def metrics_page():
     st.title("Métriques d'apprentissage du modèle")
 
-    try:
-        # Envoyer la requête pour obtenir les métriques
-        response = requests.get(f"{API_URL}/metrics/")
+    # Afficher l'accuracy
+    st.subheader("Accuracy")
+    accuracy = metrics.get("accuracy", "Non disponible")
+    if accuracy != "Non disponible":
+        st.write(f"Accuracy: {accuracy:.2f}")
+    else:
+        st.warning("L'accuracy n'est pas disponible.")
 
-        if response.status_code == 200:
-            # Récupérer les métriques
-            metrics = response.json()
+    # Afficher le classification report
+    st.subheader("Classification Report")
+    classification_report = metrics.get("classification_report", "Non disponible")
+    if classification_report != "Non disponible":
+        st.text(classification_report)
+    else:
+        st.warning("Le rapport de classification n'est pas disponible.")
 
-            # Afficher l'accuracy
-            st.subheader("Accuracy")
-            accuracy = metrics.get("accuracy", "Non disponible")
-            if accuracy != "Non disponible":
-                st.write(f"Accuracy: {accuracy:.2f}")
-            else:
-                st.warning("L'accuracy n'est pas disponible.")
+    # Afficher AUC ROC
+    st.subheader("AUC ROC")
+    auc_values = metrics.get("roc_auc", [])
+    if auc_values:
+        for i, auc in enumerate(auc_values):
+            st.write(f"AUC ROC for class {i}: {auc:.2f}")
+    else:
+        st.warning("Les valeurs AUC ROC ne sont pas disponibles.")
 
-            # Afficher le classification report
-            st.subheader("Classification Report")
-            classification_report = metrics.get("classification_report", "Non disponible")
-            if classification_report != "Non disponible":
-                st.text(classification_report)
-            else:
-                st.warning("Le rapport de classification n'est pas disponible.")
+    # Afficher la courbe ROC
+    st.subheader("Courbe ROC")
+    fpr_values = metrics.get("fpr", [])
+    tpr_values = metrics.get("tpr", [])
+    auc_values = metrics.get("roc_auc", [])
+    if fpr_values and tpr_values and auc_values:
+        for i, (fpr, tpr, auc) in enumerate(zip(fpr_values, tpr_values, auc_values)):
+            fig, ax = plt.subplots()
+            ax.plot(fpr, tpr, label=f"Class {i} (AUC = {auc:.2f})")
+            ax.plot([0, 1], [0, 1], "k--")
+            ax.set_xlim([0.0, 1.0])
+            ax.set_ylim([0.0, 1.05])
+            ax.set_xlabel('False Positive Rate')
+            ax.set_ylabel('True Positive Rate')
+            ax.legend(loc='lower right')
+            st.pyplot(fig)
+    else:
+        st.warning("Les données pour les courbes ROC sont manquantes.")
 
-            # Afficher AUC ROC
-            st.subheader("AUC ROC")
-            auc_values = metrics.get("roc_auc", [])
-            if auc_values:
-                for i, auc in enumerate(auc_values):
-                    st.write(f"AUC ROC for class {i}: {auc:.2f}")
-            else:
-                st.warning("Les valeurs AUC ROC ne sont pas disponibles.")
-
-            # Afficher la courbe ROC
-            st.subheader("Courbe ROC")
-            fpr_values = metrics.get("fpr", [])
-            tpr_values = metrics.get("tpr", [])
-            auc_values = metrics.get("roc_auc", [])
-            if fpr_values and tpr_values and auc_values:
-                for i, (fpr, tpr, auc) in enumerate(zip(fpr_values, tpr_values, auc_values)):
-                    fig, ax = plt.subplots()
-                    ax.plot(fpr, tpr, label=f"Class {i} (AUC = {auc:.2f})")
-                    ax.plot([0, 1], [0, 1], "k--")
-                    ax.set_xlim([0.0, 1.0])
-                    ax.set_ylim([0.0, 1.05])
-                    ax.set_xlabel('False Positive Rate')
-                    ax.set_ylabel('True Positive Rate')
-                    ax.legend(loc='lower right')
-                    st.pyplot(fig)
-            else:
-                st.warning("Les données pour les courbes ROC sont manquantes.")
-
-            # Afficher la courbe Precision-Recall
-            st.subheader("Courbe Precision-Recall")
-            recall_values = metrics.get("recall", [])
-            precision_values = metrics.get("precision", [])
-            pr_auc_values = metrics.get("pr_auc", [])
-            if recall_values and precision_values and pr_auc_values:
-                for i, (recall, precision, pr_auc) in enumerate(zip(recall_values, precision_values, pr_auc_values)):
-                    fig, ax = plt.subplots()
-                    ax.plot(recall, precision, label=f"Class {i} (PR AUC = {pr_auc:.2f})")
-                    ax.set_xlim([0.0, 1.0])
-                    ax.set_ylim([0.0, 1.05])
-                    ax.set_xlabel('Recall')
-                    ax.set_ylabel('Precision')
-                    ax.legend(loc='lower left')
-                    st.pyplot(fig)
-            else:
-                st.warning("Les données pour les courbes Precision-Recall sont manquantes.")
-        else:
-            st.error(f"Erreur API ({response.status_code}): {response.text}")
-    except requests.exceptions.RequestException as e:
-        st.error(f"Erreur de connexion à l'API : {e}")
+    # Afficher la courbe Precision-Recall
+    st.subheader("Courbe Precision-Recall")
+    recall_values = metrics.get("recall", [])
+    precision_values = metrics.get("precision", [])
+    pr_auc_values = metrics.get("pr_auc", [])
+    if recall_values and precision_values and pr_auc_values:
+        for i, (recall, precision, pr_auc) in enumerate(zip(recall_values, precision_values, pr_auc_values)):
+            fig, ax = plt.subplots()
+            ax.plot(recall, precision, label=f"Class {i} (PR AUC = {pr_auc:.2f})")
+            ax.set_xlim([0.0, 1.0])
+            ax.set_ylim([0.0, 1.05])
+            ax.set_xlabel('Recall')
+            ax.set_ylabel('Precision')
+            ax.legend(loc='lower left')
+            st.pyplot(fig)
+    else:
+        st.warning("Les données pour les courbes Precision-Recall sont manquantes.")
+        
+        
 
 
 # ---------------------- Gestion de la navigation ----------------------
