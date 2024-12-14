@@ -35,6 +35,7 @@ L'application permet à l'utilisateur de :
 
 <h2 id="Installation">🛠️ Installation</h2>
 
+``` bash
 - Clonez le dépôt
 git clone [https://github.com/username/iris-flower-prediction.git](https://github.com/karamoko17/Projet_MlOps.git)
 cd iris-flower-prediction
@@ -45,6 +46,7 @@ source venv/bin/activate  # Sur Windows, utilisez venv\Scripts\activate
 
 - Installez les dépendances
 pip install -r requirements.txt
+```
 
 
 
@@ -67,11 +69,14 @@ un exemple d'input pour l'API:
   "petal_length": 1.4,
   "petal_width": 0.2
 }
-
+```
 
 <h2 id="Fonctionnalités">🏗️ Fonctionnalités</h2>
 
-
+- Prédiction des espèces de fleurs Iris (Setosa, Versicolor, Virginica)
+- Affichage des métriques du modèle
+- Visualisation des courbes ROC et Precision-Recall
+- Interface interactive via Streamlit
 
 <h2 id="Contribuer">📊 Contribuer</h2>
 
