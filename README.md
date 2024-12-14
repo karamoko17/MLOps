@@ -10,6 +10,7 @@ Une application pour prédire les espèces de fleurs Iris à l'aide d'un modèle
 5. [Fonctionnalités](#Fonctionnalités)
 6. [Contribuer](#Contribuer)
 7. [Exemples de résultats](#Exemples de résultats)
+8. [Deployememnt de l'appliction sur Streamlit Cloud](#Deployememnt de l'appliction sur Streamlit Cloud)
 
 <h2 id="Description">🧩 **Description**</h2>
 
@@ -37,17 +38,14 @@ Ce projet utilise des techniques de machine learning pour prédire la catégorie
 
 
 
-## **Contribuer**
 <h2 id="Contribuer">📊 Contribuer</h2>
 
 
 
-##  **Exemples de résultats**
 <h2 id="Exemples de résultats">🎯 Exemples de résultats</h2>
 
 
 
-## **Deployememnt de l'appliction sur Streamlit Cloud**
 <h2 id="Deployememnt de l'appliction sur Streamlit Cloud">⚖️ Deployememnt de l'appliction sur Streamlit Cloud</h2>
 
 https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/
