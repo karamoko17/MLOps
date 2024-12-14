@@ -67,7 +67,13 @@ def predict(request: PredictionRequest):
 
 @fastapi_app.get("/metrics/")
 def get_metrics():
-    return metrics
+    # Debug : Afficher les métriques avant de les renvoyer
+    print("Metrics loaded:", metrics)
+    
+    try:
+        return metrics
+    except Exception as e:
+        return {"error": f"Error retrieving metrics: {e}"}
 
 
 # Fonction pour démarrer FastAPI
@@ -145,21 +151,24 @@ def metrics_page():
         st.error(f"Erreur de connexion à l'API : {e}")
 
 
-def main():
-    st.sidebar.title("Navigation")
-    page = st.session_state.current_page("Aller à", ["Prédiction", "Métriques"])
+# ---------------------- Gestion de la navigation ----------------------
+# Ajouter les boutons dans la barre latérale pour changer de page
+if "current_page" not in st.session_state:
+    st.session_state.current_page = "Prédiction"  # Page par défaut
 
-    if page == "Prédiction":
-        prediction_page()
-    elif page == "Métriques":
-        metrics_page()
-# ---------------------------------------------
-# Démarrage des applications
-# ---------------------------------------------
-if __name__ == "__main__":
-    # Démarrer FastAPI dans un thread séparé
-    api_thread = threading.Thread(target=start_fastapi, daemon=True)
-    api_thread.start()
+# Utilisation de st.radio pour la navigation entre les pages
+page = st.sidebar.radio("Aller à", ["Prédiction", "Métriques"])
 
-    # Démarrer Streamlit
-    main()
+# Mise à jour de la page en fonction de la sélection de l'utilisateur
+if page == "Prédiction":
+    st.session_state.current_page = "Prédiction"
+elif page == "Métriques":
+    st.session_state.current_page = "Métriques"
+
+# Afficher la page en fonction de l'état
+if st.session_state.current_page == "Prédiction":
+    prediction_page()
+elif st.session_state.current_page == "Métriques":
+    metrics_page()
+    
+    
