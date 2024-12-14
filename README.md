@@ -10,7 +10,7 @@
 6. [Exemples de résultats](#Exemples-de-résultats)
 7. [Deployememnt de l'appliction sur Streamlit Cloud](#Deployememnt-de-l'appliction-sur-Streamlit-Cloud)
 
-<h2 id="Description">🧩 **Description**</h2>
+<h2 id="Description">🧩 Description</h2>
 
 Cette application permet de prédire les espèces de fleurs Iris à l'aide d'un modèle de machine learning préalablement entraîné sur l'ensemble de données Iris. Le modèle est capable de classer une fleur parmi trois espèces possibles : Setosa, Versicolor, ou Virginica, en fonction de ses caractéristiques physiques, telles que la longueur et la largeur des sépales et des pétales.
 
