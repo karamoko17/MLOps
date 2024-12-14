@@ -49,6 +49,8 @@ pip install -r requirements.txt
 
 <h2 id="Utilisation">💻 Utilisation</h2>
 
+Pour téléchargé l'image, la commade est:
+
 ``` bash
 docker pull karamoko1703/mlops:latest
 
