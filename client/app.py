@@ -1,11 +1,17 @@
+import os
 import streamlit as st
 import requests
 import joblib
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 # Charger les métriques sauvegardées (assure-toi que 'metrics.pkl' est dans le bon répertoire)
-metrics = joblib.load("metrics.pkl") 
+#metrics = joblib.load("metrics.pkl") 
+
+# Utilisation d'un chemin relatif
+file_path = os.path.join("server", "metrics.pkl")
+metrics = joblib.load(file_path)
 
 # URL de l'API FastAPI
 API_URL = "http://server:8000/predict/"
