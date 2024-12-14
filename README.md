@@ -7,9 +7,8 @@
 3. [Installation](#Installation)
 4. [Utilisation](#Utilisation)
 5. [Fonctionnalités](#Fonctionnalités)
-6. [Contribuer](#Contribuer)
-7. [Exemples de résultats](#Exemples-de-résultats)
-8. [Deployememnt de l'appliction sur Streamlit Cloud](#Deployememnt-de-l'appliction-sur-Streamlit-Cloud)
+6. [Exemples de résultats](#Exemples-de-résultats)
+7. [Deployememnt de l'appliction sur Streamlit Cloud](#Deployememnt-de-l'appliction-sur-Streamlit-Cloud)
 
 <h2 id="Description">🧩 **Description**</h2>
 
@@ -48,8 +47,6 @@ source venv/bin/activate  # Sur Windows, utilisez venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-
-
 <h2 id="Utilisation">💻 Utilisation</h2>
 
 ``` bash
@@ -78,12 +75,11 @@ un exemple d'input pour l'API:
 - Visualisation des courbes ROC et Precision-Recall
 - Interface interactive via Streamlit
 
-<h2 id="Contribuer">📊 Contribuer</h2>
-
-
-
 <h2 id="Exemples de résultats">🎯 Exemples de résultats</h2>
 
+Voici un exemple de prédiction pour une fleur Iris :
+- Prédiction : Setosa
+- Image de la fleur : ![Iris Setosa](images/setosa.jpg)
 
 
 <h2 id="Deployememnt de l'appliction sur Streamlit Cloud">⚖️ Deployememnt de l'appliction sur Streamlit Cloud</h2>
