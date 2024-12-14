@@ -1,0 +1,7 @@
+streamlit
+requests
+pydantic
+uvicorn
+scikit-learn
+joblib
+matplotlib
