@@ -6,11 +6,25 @@ import streamlit as st
 import requests
 from pydantic import BaseModel
 import joblib
+import os
 
 # Charger les ressources nécessaires pour le serveur FastAPI
-model = joblib.load("server/model.pkl")
-metrics = joblib.load("server/metrics.pkl")
-feature_names = joblib.load("server/feature_names.pkl")
+#model = joblib.load("server/model.pkl")
+#metrics = joblib.load("server/metrics.pkl")
+#feature_names = joblib.load("server/feature_names.pkl")
+
+# Définir un chemin absolu basé sur le répertoire racine
+file_path = os.path.join("server", "metrics.pkl")
+metrics = joblib.load(file_path)
+
+# Définir un chemin absolu basé sur le répertoire racine
+file_path1 = os.path.join("server", "model.pkl")
+model = joblib.load(file_path1)
+
+# Définir un chemin absolu basé sur le répertoire racine
+file_path2 = os.path.join("server", "feature_names.pkl")
+feature_names = joblib.load(file_path2)
+
 
 # FastAPI App
 fastapi_app = FastAPI()
