@@ -166,19 +166,17 @@ def metrics_page():
 if "current_page" not in st.session_state:
     st.session_state.current_page = "Prédiction"  # Page par défaut
 
-# Utilisation de st.radio pour la navigation entre les pages
-page = st.sidebar.radio("Aller à", ["Prédiction", "Métriques"])
-
-# Mise à jour de la page en fonction de la sélection de l'utilisateur
-if page == "Prédiction":
+# Boutons de navigation dans la barre latérale
+if st.sidebar.button("Page Prédiction"):
     st.session_state.current_page = "Prédiction"
-elif page == "Métriques":
+
+if st.sidebar.button("Page Métriques"):
     st.session_state.current_page = "Métriques"
 
-# Afficher la page en fonction de l'état
+# Afficher la page en fonction de l'état de st.session_state.current_page
 if st.session_state.current_page == "Prédiction":
     prediction_page()
 elif st.session_state.current_page == "Métriques":
     metrics_page()
-    
+
     
