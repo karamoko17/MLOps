@@ -76,8 +76,8 @@ You're ready to use the project! 🚀
 
 The application offers two main interfaces: a Prediction Page, dedicated to the classification of Iris flowers, and a Metrics Page, which visualizes the model's performance.
 
-- Prediction Page**: This page allows the user to enter the characteristics of a flower, such as the length and width of its sepals and petals. Once the data has been entered, simply click on the Predict button to obtain the result. For example, for specific characteristics, the model can predict that the flower's species is Setosa. In addition, an image illustrating the predicted species is displayed, providing a clear and intuitive visualization of the result.
-- Metrics page**: This page presents model performance via indicators such as accuracy, classification ratio, as well as ROC and Precision-Recall curves. These visualizations make it easy to assess the quality of the model's predictions.
+- **Prediction Page**: This page allows the user to enter the characteristics of a flower, such as the length and width of its sepals and petals. Once the data has been entered, simply click on the Predict button to obtain the result. For example, for specific characteristics, the model can predict that the flower's species is Setosa. In addition, an image illustrating the predicted species is displayed, providing a clear and intuitive visualization of the result.
+- **Metrics page**: This page presents model performance via indicators such as accuracy, classification ratio, as well as ROC and Precision-Recall curves. These visualizations make it easy to assess the quality of the model's predictions.
 
 ![image](https://github.com/user-attachments/assets/31e87730-aaec-4e3f-99f5-07015e33ceb1)
 
