@@ -15,7 +15,7 @@
 
 Cette application prédit les espèces de fleurs Iris à l'aide d'un modèle de machine learning entraîné sur l'ensemble de données Iris. Elle permet de classer une fleur parmi trois espèces : Setosa, Versicolor, ou Virginica, en se basant sur ses caractéristiques physiques, telles que la longueur et la largeur des sépales et des pétales.
 
-Le projet utilise FastAPI pour exposer une API RESTful capable de traiter les demandes de prédiction via des requêtes HTTP. Une interface utilisateur interactive a été développée avec Streamlit, permettant aux utilisateurs de saisir les caractéristiques d'une fleur et d'obtenir une prédiction immédiate. Pour simplifier le déploiement et améliorer l'évolutivité, l'ensemble du projet est orchestré dans un environnement Dockerisé.
+Le projet utilise FastAPI pour exposer une API capable de traiter les demandes de prédiction via des requêtes HTTP. Une interface utilisateur interactive a été développée avec Streamlit, permettant aux utilisateurs de saisir les caractéristiques d'une fleur et d'obtenir une prédiction immédiate. Pour simplifier le déploiement et améliorer l'évolutivité, l'ensemble du projet est orchestré dans un environnement Dockerisé.
 
 En backend, l'application s'intègre à MongoDB pour gérer le stockage des données, offrant des fonctionnalités telles que l'ajout et la liste des fruits, illustrant les interactions de base avec une base de données.
 
