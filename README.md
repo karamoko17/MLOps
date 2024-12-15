@@ -47,7 +47,7 @@ git clone https://github.com/karamoko17/Projet_MlOps.git
 2. Access the project directory
 - Navigate to the cloned directory:
 ```bash
-cd Project_MlOps
+cd Projet_MlOps
 ```
 
 3. Build and start Docker containers
