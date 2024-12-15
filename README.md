@@ -7,24 +7,30 @@
 3. [Installation](#Installation)
 4. [Utilisation](#Utilisation)
 5. [Fonctionnalités](#Fonctionnalités)
-6. [Exemples de résultats](#Exemples-de-résultats)
+6. [Utilisation et exemples de résultats](#Utilisation et exemples de résultats)
 7. [Deployememnt de l'appliction sur Streamlit Cloud](#Deployememnt-de-l'appliction-sur-Streamlit-Cloud)
 8. [Auteur](#Auteur)
 
 <h2 id="Description">🧩 Description</h2>
 
-Cette application permet de prédire les espèces de fleurs Iris à l'aide d'un modèle de machine learning préalablement entraîné sur l'ensemble de données Iris. Le modèle est capable de classer une fleur parmi trois espèces possibles : Setosa, Versicolor, ou Virginica, en fonction de ses caractéristiques physiques, telles que la longueur et la largeur des sépales et des pétales.
 
-Le projet utilise FastAPI pour exposer une API, permettant de traiter les demandes de prédiction via des requêtes HTTP. Streamlit est utilisé pour créer une interface graphique interactive, où l'utilisateur peut facilement entrer les caractéristiques d'une fleur et obtenir une prédiction immédiate.
+Voici une version améliorée et plus fluide de votre texte :
 
-Le modèle de machine learning utilisé dans ce projet est un modèle supervisé qui a été formé à l'aide de l'ensemble de données Iris. Cette base de données est largement utilisée pour les démonstrations de classification en machine learning et contient des informations sur 150 échantillons de fleurs Iris, avec quatre caractéristiques par échantillon.
+Cette application prédit les espèces de fleurs Iris à l'aide d'un modèle de machine learning entraîné sur l'ensemble de données Iris. Elle permet de classer une fleur parmi trois espèces : Setosa, Versicolor, ou Virginica, en se basant sur ses caractéristiques physiques, telles que la longueur et la largeur des sépales et des pétales.
+
+Le projet utilise FastAPI pour exposer une API RESTful capable de traiter les demandes de prédiction via des requêtes HTTP. Une interface utilisateur interactive a été développée avec Streamlit, permettant aux utilisateurs de saisir les caractéristiques d'une fleur et d'obtenir une prédiction immédiate. Pour simplifier le déploiement et améliorer l'évolutivité, l'ensemble du projet est orchestré dans un environnement Dockerisé.
+
+En backend, l'application s'intègre à MongoDB pour gérer le stockage des données, offrant des fonctionnalités telles que l'ajout et la liste des fruits, illustrant les interactions de base avec une base de données.
+
+Le modèle de machine learning utilisé est le KNeighborsClassifier, un algorithme supervisé basé sur la méthode des k-plus-proches voisins (k-NN). Ce modèle a été formé à partir de l'ensemble de données Iris, un dataset bien connu contenant des informations sur 150 échantillons de fleurs, avec quatre caractéristiques par échantillon (longueur/largeur des sépales et pétales). Ce dataset est largement utilisé dans les démonstrations et expérimentations de classification en machine learning.
 
 L'application permet à l'utilisateur de :
 
 - Entrer les caractéristiques d'une fleur Iris.
 - Obtenir une prédiction instantanée sur l'espèce de la fleur.
 - Visualiser les résultats sous forme de texte et d'images des différentes espèces (Setosa, Versicolor, Virginica).
-- Consulter les métriques du modèle, telles que la précision, le rapport de classification, ainsi que les courbes ROC et Precision-Recall.
+- Consulter les métriques du modèle.
+
 
 <h2 id="Prérequis">🤖 Prérequis</h2>
 
@@ -35,59 +41,41 @@ L'application permet à l'utilisateur de :
 
 <h2 id="Installation">🛠️ Installation</h2>
 
-``` bash
-- Clonez le dépôt
+Pour exécuter ce projet, suivez les étapes ci-dessous :
+1. Cloner le dépôt
+Exécutez la commande suivante dans votre terminal pour cloner le dépôt GitHub :
+```bash
 git clone https://github.com/karamoko17/Projet_MlOps.git
-cd iris-flower-prediction
-
-- Créez un environnement virtuel (optionnel)
-python3 -m venv venv
-source venv/bin/activate  # Sur Windows, utilisez venv\Scripts\activate
-
-- Installez les dépendances
-pip install -r requirements.txt
 ```
 
-<h2 id="Utilisation">💻 Utilisation</h2>
-
-Pour téléchargé l'image, la commade est:
-
-``` bash
-docker pull karamoko1703/mlops:latest
-
-# Démarrez l'API FastAPI
-uvicorn app:app --reload
-
-# Démarrez l'application Streamlit
-streamlit run app.py
-ou
-http://localhost:8501/
-
-un exemple d'input pour l'API:
-{
-  "sepal_length": 5.1,
-  "sepal_width": 3.5,
-  "petal_length": 1.4,
-  "petal_width": 0.2
-}
+2. Accéder au répertoire du projet
+Naviguez dans le répertoire cloné :
+```bash
+cd Projet_MlOps
 ```
+
+3. Construire et démarrer les conteneurs Docker
+Exécutez la commande suivante pour créer les images Docker et démarrer les conteneurs :
+```bash
+docker-compose up --build  
+```
+Vous êtes prêt à utiliser le projet ! 🚀
+
 
 <h2 id="Fonctionnalités">🏗️ Fonctionnalités</h2>
 
+- Interface interactive via Streamlit
 - Prédiction des espèces de fleurs Iris (Setosa, Versicolor, Virginica)
 - Affichage des métriques du modèle
 - Visualisation des courbes ROC et Precision-Recall
-- Interface interactive via Streamlit
 
-<h2 id="Exemples de résultats">🎯 Exemples de résultats</h2>
+<h2 id="Utilisation et exemples de résultats">💻 Utilisation et exemples de résultats</h2>
 
-L'application propose deux interfaces principales : une page dédiée à la prédiction des espèces de fleurs Iris et une autre pour l'affichage des métriques du modèle.
+L'application propose deux interfaces principales : une page dédiée à la prédiction (Page Prédiction) des espèces de fleurs Iris et une autre pour l'affichage des métriques du modèle(Page Métriques.
 
-Exemple de fonctionnalité :
-
-- **Prédiction** : L'utilisateur entre les caractéristiques d'une fleur et le modèle prédit l'espèce. Par exemple, la prédiction pour une fleur donnée pourrait être Setosa.
-- **Image de la fleur** : Une image de la fleur correspondant à la prédiction est affichée, offrant une représentation visuelle.
-- **Métriques** : Les métriques du modèle, telles que la précision, le rapport de classification, et les courbes ROC et Precision-Recall, sont affichées pour évaluer la performance du modèle.
+- **Prédiction** : l'utilisateur entre les caractéristiques d'une fleur. Par exemple, la prédiction pour une fleur donnée pourrait être Setosa. Puis cliqué sur le bouton predire.
+- **Image de la fleur** : une image de la fleur correspondant à la prédiction est affichée, offrant une représentation visuelle.
+- **Métriques** : sur la page Métriques, les métriques du modèle, telles que la précision, le rapport de classification, et les courbes ROC et Precision-Recall, sont affichées pour évaluer la performance du modèle.
 
 ![image](https://github.com/user-attachments/assets/31e87730-aaec-4e3f-99f5-07015e33ceb1)
 
