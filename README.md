@@ -7,7 +7,7 @@
 3. [Installation](#Installation)
 4. [Utilisation](#Utilisation)
 5. [Fonctionnalités](#Fonctionnalités)
-6. [Utilisation et exemples de résultats](#Utilisation et exemples de résultats)
+6. [Utilisation et exemples de résultats](#Utilisation-et-exemples-de-résultats)
 7. [Deployememnt de l'appliction sur Streamlit Cloud](#Deployememnt-de-l'appliction-sur-Streamlit-Cloud)
 8. [Auteur](#Auteur)
 
