@@ -9,6 +9,7 @@
 5. [Fonctionnalités](#Fonctionnalités)
 6. [Exemples de résultats](#Exemples-de-résultats)
 7. [Deployememnt de l'appliction sur Streamlit Cloud](#Deployememnt-de-l'appliction-sur-Streamlit-Cloud)
+8. [Auteur](#Auteur)
 
 <h2 id="Description">🧩 Description</h2>
 
@@ -104,3 +105,17 @@ Exemple de fonctionnalité :
 L'application a été déployée sur **Streamlit Cloud**, offrant ainsi une interface interactive accessible via le lien suivant: [Accéder à l'application](https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/) ou https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/. 
 
 Grâce à ce déploiement, les utilisateurs peuvent facilement interagir avec l'application pour effectuer des prédictions sur les fleurs Iris, visualiser les résultats sous forme d'images et consulter les métriques du modèle. Streamlit Cloud permet de rendre l'application disponible en ligne, sans nécessiter d'infrastructure complexe, offrant ainsi une expérience utilisateur fluide et accessible depuis n'importe quel navigateur.
+
+
+<h2 id="Contribution">🤝 Contribution</h2>
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir un ticket ou à soumettre une demande d'extraction pour suggérer des améliorations. Voici comment vous pouvez participer :
+
+1. Clonez le projet.
+2. Créez une branche pour votre fonctionnalité.
+3. Apportez vos modifications et validez-les avec un message clair.
+4. Poussez vos modifications vers votre branche sur le dépôt distant.  
+5. Soumettez une pull request pour que votre contribution soit examinée.
+
+
+<h2 id="Auteur">🎯 Auteur</h2> 
+Ce projet a été conçu et développé par KARAMOKO Awa, étudiante en Master 2 SISE (Statistique et Informatique pour la Science des Données) à l'Université Lumière Lyon 2.
