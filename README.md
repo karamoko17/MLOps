@@ -31,7 +31,7 @@ L'application permet à l'utilisateur de :
 
 <h2 id="Prérequis">🤖 Prérequis</h2>
 
-- Docker et Docker Compose installés sur votre machine.
+- Docker, Docker Compose et Docker Desktop installés sur votre machine.
 - Python 3.8 ou supérieur
 - pip (pour l'installation des dépendances)
 - Un environnement virtuel (facultatif mais recommandé)
