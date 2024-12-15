@@ -56,6 +56,13 @@ cd Projet_MlOps
 ```bash
 docker-compose up --build  
 ```
+
+4. Accès à l'application
+- Pour accéder à l'application, ouvrez votre navigateur et entrez l'URL suivante :
+```bash
+http://localhost:8501/
+```
+
 Vous êtes prêt à utiliser le projet ! 🚀
 
 
