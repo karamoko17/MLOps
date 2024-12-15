@@ -6,7 +6,7 @@
 2. [Prerequisites](#Prerequisites)
 3. [Installation](#Installation)
 4. [Features](#Features)
-5. [Use and examples of results](#Utilisation-et-exemples-de-résultats)
+5. [Use and examples of results](#Use-and-examples-of-results)
 6. [Deploying the application on Streamlit Cloud](#Deploying-the-application-on-Streamlit-Cloud)
 7. [Contribution](#Contribution)
 8. [Author](#Author)
