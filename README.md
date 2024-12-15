@@ -3,89 +3,81 @@
 
 ## 📖 **Table of Contents**
 1. [Descriptions](#descriptions)
-2. [Prérequis](#Prérequis)
+2. [Prerequisites](#Prerequisites)
 3. [Installation](#Installation)
-4. [Utilisation](#Utilisation)
-5. [Fonctionnalités](#Fonctionnalités)
-6. [Exemples de résultats](#Exemples-de-résultats)
-7. [Deployememnt de l'appliction sur Streamlit Cloud](#Deployememnt-de-l'appliction-sur-Streamlit-Cloud)
+4. [Features](#Features)
+5. [Use and examples of results](#Use-and-examples-of-results)
+6. [Deploying the application on Streamlit Cloud](#Deploying-the-application-on-Streamlit-Cloud)
+7. [Contribution](#Contribution)
+8. [Author](#Author)
 
-<h2 id="Description">🧩 Description</h2>
+<h2 id="Descriptions">🧩 Descriptions</h2>
 
-Cette application permet de prédire les espèces de fleurs Iris à l'aide d'un modèle de machine learning préalablement entraîné sur l'ensemble de données Iris. Le modèle est capable de classer une fleur parmi trois espèces possibles : Setosa, Versicolor, ou Virginica, en fonction de ses caractéristiques physiques, telles que la longueur et la largeur des sépales et des pétales.
+This application predicts Iris flower species using a machine learning model trained on the Iris dataset. It classifies a flower into one of three species: Setosa, Versicolor, or Virginica, based on its physical characteristics, such as the length and width of the sepals and petals.
 
-Le projet utilise FastAPI pour exposer une API, permettant de traiter les demandes de prédiction via des requêtes HTTP. Streamlit est utilisé pour créer une interface graphique interactive, où l'utilisateur peut facilement entrer les caractéristiques d'une fleur et obtenir une prédiction immédiate.
+The project uses FastAPI to expose an API capable of handling prediction requests via HTTP requests. An interactive user interface has been developed with Streamlit, enabling users to enter the characteristics of a flower and obtain an immediate prediction. To simplify deployment and improve scalability, the entire project is orchestrated in a Dockerized environment.
 
-Le modèle de machine learning utilisé dans ce projet est un modèle supervisé qui a été formé à l'aide de l'ensemble de données Iris. Cette base de données est largement utilisée pour les démonstrations de classification en machine learning et contient des informations sur 150 échantillons de fleurs Iris, avec quatre caractéristiques par échantillon.
+On the backend, the application integrates with MongoDB to manage data storage, offering functionalities such as adding and listing fruits, illustrating basic interactions with a database.
 
-L'application permet à l'utilisateur de :
+The machine learning model used is the KNeighborsClassifier, a supervised algorithm based on the k-nearest neighbors (k-NN) method. This model was trained on the Iris dataset, a well-known dataset containing information on 150 flower samples, with four features per sample (length/width of sepals and petals). 
 
-- Entrer les caractéristiques d'une fleur Iris.
-- Obtenir une prédiction instantanée sur l'espèce de la fleur.
-- Visualiser les résultats sous forme de texte et d'images des différentes espèces (Setosa, Versicolor, Virginica).
-- Consulter les métriques du modèle, telles que la précision, le rapport de classification, ainsi que les courbes ROC et Precision-Recall.
+The application allows the user to :
 
-<h2 id="Prérequis">🤖 Prérequis</h2>
+- Enter the characteristics of an Iris flower.
+- Get an instant prediction of the flower species.
+- View results in text and image format for different species (Setosa, Versicolor, Virginica).
+- View model metrics.
 
-- Docker et Docker Compose installés sur votre machine.
-- Python 3.8 ou supérieur
-- pip (pour l'installation des dépendances)
-- Un environnement virtuel (facultatif mais recommandé)
+<h2 id="Prerequisites">🤖 Prerequisites</h2>
+
+- Docker, Docker Compose and Docker Desktop installed on your machine.
+- Python 3.8 or higher
+- pip (to install dependencies)
+- A virtual environment (optional but recommended)
 
 <h2 id="Installation">🛠️ Installation</h2>
 
-``` bash
-- Clonez le dépôt
-git clone [https://github.com/username/iris-flower-prediction.git](https://github.com/karamoko17/Projet_MlOps.git)
-cd iris-flower-prediction
-
-- Créez un environnement virtuel (optionnel)
-python3 -m venv venv
-source venv/bin/activate  # Sur Windows, utilisez venv\Scripts\activate
-
-- Installez les dépendances
-pip install -r requirements.txt
+To run this project, follow the steps below:
+1. Clone the repository
+- Run the following command in your terminal to clone the GitHub repository:
+```bash
+git clone https://github.com/karamoko17/Projet_MlOps.git
 ```
 
-<h2 id="Utilisation">💻 Utilisation</h2>
+2. Access the project directory
+- Navigate to the cloned directory:
+```bash
+cd Project_MlOps
+```
 
-``` bash
-docker compose build
-docker compose up
+3. Build and start Docker containers
+- Run the following command to create the Docker images and start the containers:
+```bash
+docker-compose up --build  
+```
 
-# Démarrez l'API FastAPI
-uvicorn app:app --reload
-
-# Démarrez l'application Streamlit
-streamlit run app.py
-ou
+4. Accessing the application
+- To access the application, open your browser and enter the following URL:
+```bash
 http://localhost:8501/
-
-un exemple d'input pour l'API:
-{
-  "sepal_length": 5.1,
-  "sepal_width": 3.5,
-  "petal_length": 1.4,
-  "petal_width": 0.2
-}
 ```
 
-<h2 id="Fonctionnalités">🏗️ Fonctionnalités</h2>
+You're ready to use the project! 🚀
 
-- Prédiction des espèces de fleurs Iris (Setosa, Versicolor, Virginica)
-- Affichage des métriques du modèle
-- Visualisation des courbes ROC et Precision-Recall
-- Interface interactive via Streamlit
 
-<h2 id="Exemples de résultats">🎯 Exemples de résultats</h2>
+<h2 id="Features">🏗️ Features</h2>
 
-L'application propose deux interfaces principales : une page dédiée à la prédiction des espèces de fleurs Iris et une autre pour l'affichage des métriques du modèle.
+- Interactive interface via Streamlit
+- Prediction of Iris flower species (Setosa, Versicolor, Virginica)
+- Display of model metrics
+- Visualization of ROC and Precision-Recall curves
 
-Exemple de fonctionnalité :
+<h2 id="Use-and-examples-of-results">💻 Use and examples of results</h2>
 
-- **Prédiction** : L'utilisateur entre les caractéristiques d'une fleur et le modèle prédit l'espèce. Par exemple, la prédiction pour une fleur donnée pourrait être Setosa.
-- **Image de la fleur** : Une image de la fleur correspondant à la prédiction est affichée, offrant une représentation visuelle.
-- **Métriques** : Les métriques du modèle, telles que la précision, le rapport de classification, et les courbes ROC et Precision-Recall, sont affichées pour évaluer la performance du modèle.
+The application offers two main interfaces: a Prediction Page, dedicated to the classification of Iris flowers, and a Metrics Page, which visualizes the model's performance.
+
+- **Prediction Page**: This page allows the user to enter the characteristics of a flower, such as the length and width of its sepals and petals. Once the data has been entered, simply click on the Predict button to obtain the result. For example, for specific characteristics, the model can predict that the flower's species is Setosa. In addition, an image illustrating the predicted species is displayed, providing a clear and intuitive visualization of the result.
+- **Metrics page**: This page presents model performance via indicators such as accuracy, classification ratio, as well as ROC and Precision-Recall curves. These visualizations make it easy to assess the quality of the model's predictions.
 
 ![image](https://github.com/user-attachments/assets/31e87730-aaec-4e3f-99f5-07015e33ceb1)
 
@@ -98,8 +90,21 @@ Exemple de fonctionnalité :
 ![image](https://github.com/user-attachments/assets/7f14346a-5ced-495a-8b1c-0fac446f7d0f)
 
 
-<h2 id="Deployememnt de l'appliction sur Streamlit Cloud">⚖️ Deployememnt de l'appliction sur Streamlit Cloud</h2>
+<h2 id="Deploying-the-application-on-Streamlit-Cloud">⚖️ Deploying the application on Streamlit Cloud</h2>
 
-L'application a été déployée sur **Streamlit Cloud**, offrant ainsi une interface interactive accessible via le lien suivant: [Accéder à l'application](https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/) ou https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/. 
+The application has been deployed on **Streamlit Cloud**, offering an interactive interface accessible via the following link: [Access the application](https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/) or https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/. 
 
-Grâce à ce déploiement, les utilisateurs peuvent facilement interagir avec l'application pour effectuer des prédictions sur les fleurs Iris, visualiser les résultats sous forme d'images et consulter les métriques du modèle. Streamlit Cloud permet de rendre l'application disponible en ligne, sans nécessiter d'infrastructure complexe, offrant ainsi une expérience utilisateur fluide et accessible depuis n'importe quel navigateur.
+With this deployment, users can easily interact with the application to make predictions on Iris flowers, view results as images and consult model metrics. Streamlit Cloud makes the application available online, without the need for complex infrastructure, offering a fluid user experience accessible from any browser.
+
+<h2 id="Contribution">🤝 Contribution</h2>
+
+Contributions are welcome! Feel free to open a ticket or submit a pull request to suggest improvements. Here's how you can get involved:
+
+1. Clone the project.
+2. Create a branch for your feature.
+3. Make your changes and validate them with a clear message.
+4. Push your changes to your branch on the remote repository.  
+5. Submit a pull request to have your contribution reviewed.
+
+<h2 id="Author">🎯 Author</h2> 
+This project was designed and developed by KARAMOKO Awa, a student in Master 2 SISE (Statistics and Computer Science for Data Science) at Université Lumière Lyon 2.
