@@ -68,11 +68,10 @@ Vous êtes prêt à utiliser le projet ! 🚀
 
 <h2 id="Utilisation et exemples de résultats">💻 Utilisation et exemples de résultats</h2>
 
-L'application propose deux interfaces principales : une page dédiée à la prédiction (Page Prédiction) des espèces de fleurs Iris et une autre pour l'affichage des métriques du modèle(Page Métriques.
+L'application offre deux interfaces principales : une Page Prédiction, dédiée à la classification des fleurs Iris, et une Page Métriques, qui permet de visualiser les performances du modèle.
 
-- **Prédiction** : l'utilisateur entre les caractéristiques d'une fleur. Par exemple, la prédiction pour une fleur donnée pourrait être Setosa. Puis cliqué sur le bouton predire.
-- **Image de la fleur** : une image de la fleur correspondant à la prédiction est affichée, offrant une représentation visuelle.
-- **Métriques** : sur la page Métriques, les métriques du modèle, telles que la précision, le rapport de classification, et les courbes ROC et Precision-Recall, sont affichées pour évaluer la performance du modèle.
+- **Page Prédiction** : Cette page permet à l'utilisateur de saisir les caractéristiques d'une fleur, telles que la longueur et la largeur de ses sépales et pétales. Une fois les données entrées, il suffit de cliquer sur le bouton Prédire pour obtenir le résultat. Par exemple, pour des caractéristiques spécifiques, le modèle peut prédire que l'espèce de la fleur est Setosa. En complément, une image illustrant l'espèce prédite est affichée, offrant une visualisation claire et intuitive du résultat.
+- **Page Métriques** : Cette page présente les performances du modèle via des indicateurs tels que la précision, le rapport de classification, ainsi que les courbes ROC et Precision-Recall. Ces visualisations permettent d'évaluer efficacement la qualité des prédictions du modèle.
 
 ![image](https://github.com/user-attachments/assets/31e87730-aaec-4e3f-99f5-07015e33ceb1)
 
