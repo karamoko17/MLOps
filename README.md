@@ -19,7 +19,7 @@ Le projet utilise FastAPI pour exposer une API capable de traiter les demandes d
 
 En backend, l'application s'intègre à MongoDB pour gérer le stockage des données, offrant des fonctionnalités telles que l'ajout et la liste des fruits, illustrant les interactions de base avec une base de données.
 
-Le modèle de machine learning utilisé est le KNeighborsClassifier, un algorithme supervisé basé sur la méthode des k-plus-proches voisins (k-NN). Ce modèle a été formé à partir de l'ensemble de données Iris, un dataset bien connu contenant des informations sur 150 échantillons de fleurs, avec quatre caractéristiques par échantillon (longueur/largeur des sépales et pétales). Ce dataset est largement utilisé dans les démonstrations et expérimentations de classification en machine learning.
+Le modèle de machine learning utilisé est le KNeighborsClassifier, un algorithme supervisé basé sur la méthode des k-plus-proches voisins (k-NN). Ce modèle a été formé à partir de l'ensemble de données Iris, un dataset bien connu contenant des informations sur 150 échantillons de fleurs, avec quatre caractéristiques par échantillon (longueur/largeur des sépales et pétales). 
 
 L'application permet à l'utilisateur de :
 
