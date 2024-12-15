@@ -40,19 +40,19 @@ L'application permet à l'utilisateur de :
 
 Pour exécuter ce projet, suivez les étapes ci-dessous :
 1. Cloner le dépôt
-Exécutez la commande suivante dans votre terminal pour cloner le dépôt GitHub :
+- Exécutez la commande suivante dans votre terminal pour cloner le dépôt GitHub :
 ```bash
 git clone https://github.com/karamoko17/Projet_MlOps.git
 ```
 
 2. Accéder au répertoire du projet
-Naviguez dans le répertoire cloné :
+- Naviguez dans le répertoire cloné :
 ```bash
 cd Projet_MlOps
 ```
 
 3. Construire et démarrer les conteneurs Docker
-Exécutez la commande suivante pour créer les images Docker et démarrer les conteneurs :
+- Exécutez la commande suivante pour créer les images Docker et démarrer les conteneurs :
 ```bash
 docker-compose up --build  
 ```
