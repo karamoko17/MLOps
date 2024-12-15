@@ -72,7 +72,7 @@ You're ready to use the project! 🚀
 - Display of model metrics
 - Visualization of ROC and Precision-Recall curves
 
-<h2 id="Use-and examples-of-results">💻 Use and examples of results</h2>
+<h2 id="Use-and-examples-of-results">💻 Use and examples of results</h2>
 
 The application offers two main interfaces: a Prediction Page, dedicated to the classification of Iris flowers, and a Metrics Page, which visualizes the model's performance.
 
@@ -90,7 +90,7 @@ The application offers two main interfaces: a Prediction Page, dedicated to the 
 ![image](https://github.com/user-attachments/assets/7f14346a-5ced-495a-8b1c-0fac446f7d0f)
 
 
-<h2 id="Deploying-the-application-on-Streamlit-Cloud>⚖️ Deploying-the-application-on-Streamlit-Cloud</h2>
+<h2 id="Deploying-the-application-on-Streamlit-Cloud>⚖️ Deploying the application on Streamlit Cloud</h2>
 
 The application has been deployed on **Streamlit Cloud**, offering an interactive interface accessible via the following link: [Access the application](https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/) or https://projetmlops-bhfw3yjbjylgdhn8jbrus4.streamlit.app/. 
 
