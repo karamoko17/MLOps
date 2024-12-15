@@ -11,6 +11,8 @@ services:
             dockerfile: Dockerfile
         ports:
         - 8000:8000
+        depends_on:
+            - mongo
 
     client:
         image: mlops-client
@@ -19,6 +21,9 @@ services:
             dockerfile: Dockerfile
         ports:
         - 8501:8501
+        depends_on:
+            - server
+
 
     model_training:  # Ajout du service d'entraînement
         build:
@@ -27,6 +32,8 @@ services:
         volumes:
             - ./train/models:/app/models  # Monte le volume local pour stocker les résultats
         command: python train.py 
+        depends_on:
+            - mongo
 
 
 
