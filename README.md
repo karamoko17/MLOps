@@ -34,7 +34,7 @@ The application allows the user to :
 - Python 3.8 or higher
 - pip (to install dependencies)
 - A virtual environment (optional but recommended)
-- 
+
 <h2 id="Installation">🛠️ Installation</h2>
 
 To run this project, follow the steps below:
@@ -58,7 +58,7 @@ docker-compose up --build
 
 4. Accessing the application
 - To access the application, open your browser and enter the following URL:
-``bash
+```bash
 http://localhost:8501/
 ```
 
